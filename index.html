@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Live FIFA 2026</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link rel="stylesheet" href="style.css">
+<link rel="icon" href="logo.png">
+</head>
+
+<body>
+
+<div class="app">
+
+  <div class="sidebar">
+    <div class="logo">
+      <img src="logo.png" alt="Logo">
+      <span>Live FIFA 2026</span>
+    </div>
+
+    <div class="search">
+      <input type="text" id="search" placeholder="Search channel...">
+    </div>
+
+    <div id="channelList"></div>
+  </div>
+
+  <div class="main">
+    <div class="topbar">
+      <img src="logo.png" alt="Logo">
+      <span id="channelTitle">Select Channel</span>
+    </div>
+
+    <div class="player-wrap">
+      <iframe
+        id="player"
+        allow="autoplay; encrypted-media; picture-in-picture; fullscreen"
+        allowfullscreen>
+      </iframe>
+    </div>
+  </div>
+
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
