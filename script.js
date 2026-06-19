@@ -1,40 +1,32 @@
 const channels = [
-  {
+     {
     name: "TSN",
-    url: "https://embedindia.st/embed/wc/2026-06-18/cze-rsa"
+    url: "https://xyzstreams.shop/wc-7-embed.html"
   },
-  {
+     {
     name: "FOX",
-    url: "https://embedindia.st/embed/wc/2026-06-18/cze-rsa/fox"
+    url: "https://xyzstreams.shop/wc-1-embed.html"
   },
   {
-    name: "ITV",
-    url: "https://embed.st/embed/admin/ppv-switzerland-vs-bosnia-herzegovina/5"
+    name: "BEIN MAX",
+    url: "https://xyzstreams.shop/wc-11-embed.html"
   },
-  {
-    name: "ZDF",
-    url: "https://embedindia.st/embed/wc/2026-06-18/cze-rsa/zdf"
-  },
-  {
-    name: "DAZN",
-    url: "https://embedindia.st/embed/wc/2026-06-18/cze-rsa/dazn-spain"
+    {
+    name: "TSN 4K",
+    url: "https://xyzstreams.shop/wc-8-embed.html"
   },
   {
     name: "FOX 4K",
-    url: "https://embedindia.st/embed/wc/2026-06-18/cze-rsa/fox-4k"
+    url: "https://xyzstreams.shop/wc-5-embed.html"
   },
-  {
-    name: "BBC ONE",
-    url: "https://embedindia.st/embed/wc/2026-06-18/cze-rsa/uk"
+    {
+    name: "BEIN MAX 4K",
+    url: "https://xyzstreams.shop/wc-10-embed.html"
   },
-  {
+    {
     name: "Telemundo",
-    url: "https://embedindia.st/embed/wc/2026-06-18/cze-rsa/telemundo"
+    url: "https://xyzstreams.shop/wc-6-embed.html"
   },
-  {
-    name: "Telemundo 4K",
-    url: "https://embedindia.st/embed/wc/2026-06-18/sui-bih/telemundo-4k"
-  }
 ];
 
 const channelList = document.getElementById("channelList");
