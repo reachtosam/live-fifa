@@ -1,39 +1,149 @@
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  width: 100%;
+  height: 100%;
+  background: #0b0b12;
+  color: white;
+  font-family: Arial, sans-serif;
+  overflow: hidden;
+}
+
+.app {
+  display: flex;
+  height: 100vh;
+}
+
+.sidebar {
+  width: 280px;
+  background: #151522;
+  border-right: 1px solid #2a2a3a;
+  overflow-y: auto;
+  flex-shrink: 0;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 16px;
+  font-size: 18px;
+  font-weight: bold;
+  background: #10101a;
+  border-bottom: 1px solid #2a2a3a;
+}
+
+.logo img {
+  width: 42px;
+  height: 42px;
+  object-fit: contain;
+}
+
+.search {
+  padding: 12px;
+}
+
+.search input {
+  width: 100%;
+  padding: 10px;
+  border: 0;
+  border-radius: 8px;
+  outline: none;
+}
+
+.channel {
+  padding: 14px 18px;
+  cursor: pointer;
+  border-bottom: 1px solid #252536;
+}
+
+.channel:hover {
+  background: #24243a;
+}
+
+.channel.active {
+  background: #2563eb;
+}
+
+.main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+.topbar {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  height: 60px;
+  padding: 0 18px;
+  background: #151522;
+  border-bottom: 1px solid #2a2a3a;
+  font-weight: bold;
+}
+
+.topbar img {
+  width: 32px;
+  height: 32px;
+  object-fit: contain;
+}
+
+.menu-btn {
+  display: none;
+  background: #2563eb;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-size: 22px;
+  padding: 6px 12px;
+  cursor: pointer;
+}
+
+.player-wrap {
+  position: relative;
+  flex: 1;
+  background: black;
+}
+
+iframe {
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+
 .overlay {
   display: none;
 }
 
+/* Mobile hamburger layout */
 @media (max-width: 768px) {
-
-  html,
-  body {
-    overflow: hidden;
-  }
-
-  .menu-btn {
-    display: block;
-    background: #2563eb;
-    color: white;
-    border: none;
-    border-radius: 6px;
-    font-size: 20px;
-    padding: 6px 12px;
-    cursor: pointer;
-    margin-right: 10px;
-  }
-
   .app {
     display: block;
     height: 100vh;
   }
 
   .main {
+    width: 100%;
     height: 100vh;
   }
 
   .topbar {
     height: 56px;
-    display: flex;
-    align-items: center;
+    padding: 0 12px;
+  }
+
+  .topbar img {
+    width: 28px;
+    height: 28px;
+  }
+
+  .menu-btn {
+    display: block;
   }
 
   .player-wrap {
@@ -46,36 +156,34 @@
     left: -280px;
     width: 280px;
     height: 100vh;
-    background: #151522;
     z-index: 1001;
     transition: left 0.3s ease;
     border-right: 1px solid #2a2a3a;
-    overflow-y: auto;
   }
 
   .sidebar.open {
     left: 0;
   }
 
+  .logo {
+    padding: 14px;
+    font-size: 16px;
+  }
+
+  .logo img {
+    width: 34px;
+    height: 34px;
+  }
+
   .overlay {
     position: fixed;
     inset: 0;
-    background: rgba(0,0,0,.6);
+    background: rgba(0, 0, 0, 0.6);
     z-index: 1000;
     display: none;
   }
 
   .overlay.show {
     display: block;
-  }
-}
-
-@media (min-width: 769px) {
-  .menu-btn {
-    display: none;
-  }
-
-  .overlay {
-    display: none !important;
   }
 }
