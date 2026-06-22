@@ -8,8 +8,12 @@ const channels = [
     url: "https://xyzstreams.shop/wc-1-embed.html"
   },
   {
-    name: "BEIN MAX",
-    url: "https://xyzstreams.shop/wc-11-embed.html"
+    name: "BBC",
+    url: "https://xyzstreams.shop/wc-4-embed.html"
+  },
+{
+    name: "Telemundo",
+    url: "https://xyzstreams.shop/wc-6-embed.html"
   },
     {
     name: "TSN 4K",
@@ -24,8 +28,8 @@ const channels = [
     url: "https://xyzstreams.shop/wc-10-embed.html"
   },
     {
-    name: "Telemundo",
-    url: "https://xyzstreams.shop/wc-6-embed.html"
+    name: "Telemundo 4K",
+    url: "https://xyzstreams.shop/wc-12-embed.html"
   },
 ];
 
