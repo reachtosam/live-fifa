@@ -7,9 +7,17 @@ const channels = [
     name: "FOX",
     url: "https://xyzstreams.shop/wc-1-embed.html"
   },
+{
+    name: "ITV",
+    url: "https://xyzstreams.shop/wc-3-embed.html"
+  },
   {
     name: "BBC",
     url: "https://xyzstreams.shop/wc-4-embed.html"
+  },
+{
+    name: "beIN MAX",
+    url: "https://xyzstreams.shop/wc-11-embed.html"
   },
 {
     name: "Telemundo",
@@ -26,6 +34,10 @@ const channels = [
     {
     name: "BEIN MAX 4K",
     url: "https://xyzstreams.shop/wc-10-embed.html"
+  },
+{
+    name: "Fussball 4K",
+    url: "https://xyzstreams.shop/wc-14-embed.html"
   },
     {
     name: "Telemundo 4K",
