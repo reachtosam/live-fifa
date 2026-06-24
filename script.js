@@ -4,12 +4,20 @@ const channels = [
     url: "https://xyzstreams.shop/wc-7-embed.html"
   },
      {
+    name: "FS1",
+    url: "https://xyzstreams.shop/wc-2-embed.html"
+  },
+     {
     name: "FOX",
     url: "https://xyzstreams.shop/wc-1-embed.html"
   },
 {
-    name: "ITV",
+    name: "STV",
     url: "https://xyzstreams.shop/wc-3-embed.html"
+  },
+     {
+    name: "ITV 4",
+    url: "https://xyzstreams.shop/wc-15-embed.html"
   },
   {
     name: "BBC",
@@ -23,9 +31,17 @@ const channels = [
     name: "Telemundo",
     url: "https://xyzstreams.shop/wc-6-embed.html"
   },
+     {
+    name: "UNIVERSO",
+    url: "https://xyzstreams.shop/wc-19-embed.html"
+  },
     {
     name: "TSN 4K",
     url: "https://xyzstreams.shop/wc-8-embed.html"
+  },
+     {
+    name: "FS1 4K",
+    url: "https://xyzstreams.shop/wc-fs14k-embed.html"
   },
   {
     name: "FOX 4K",
