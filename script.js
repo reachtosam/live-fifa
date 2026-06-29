@@ -25,7 +25,7 @@ const channels = [
   },
 {
     name: "beIN MAX",
-    url: "https://xyzstreams.st/wc-11-embed.html"
+    url: "https://xyzstreams.st/wc-17-embed.html"
   },
 {
     name: "Telemundo",
@@ -52,7 +52,7 @@ const channels = [
     url: "https://xyzstreams.st/wc-10-embed.html"
   },
 {
-    name: "Fussball 4K",
+    name: "FUSBALL.TV1 4K",
     url: "https://xyzstreams.st/wc-14-embed.html"
   },
     {
