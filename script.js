@@ -1,7 +1,7 @@
 const channels = [
      {
     name: "TSN",
-    url: "https://xyzstreams-6h9.pages.dev/embed.html?id=tsn1-xyz-waUvqaAACr"
+    url: "https://vileembeds.pages.dev/embed/tsn1-ca"
   },
   //    {
   //   name: "FS1",
@@ -9,15 +9,27 @@ const channels = [
   // },
      {
     name: "FOX",
-    url: "https://xyzstreams-6h9.pages.dev/embed.html?id=fox-xyz-waUvqaAAC"
+    url: "https://vileembeds.pages.dev/embed/fox-usa"
   },
 // {
 //     name: "STV",
 //     url: "https://xyzstreams.st/wc-3-embed.html"
 //   },
+       {
+    name: "DAZN",
+    url: "https://vileembeds.pages.dev/embed/daznmundial-es"
+  },
      {
     name: "ITV 4",
     url: "https://xyzstreams-6h9.pages.dev/embed.html?id=itv-xyz-waUvqaAACr"
+  },
+      {
+    name: "CazeTV",
+    url: "https://vileembeds.pages.dev/embed/cazetv-br"
+  },
+     {
+    name: "Dsports",
+    url: "https://vileembeds.pages.dev/embed/dsports-arr"
   },
   // {
   //   name: "BBC",
@@ -27,9 +39,13 @@ const channels = [
     name: "beIN Sports 1",
     url: "https://xyzstreams-6h9.pages.dev/embed.html?id=bein12fr-xyz"
   },
+     {
+    name: "beIN Sports MAX",
+    url: "https://vileembeds.pages.dev/embed/beinsportsmax-sa"
+  },
 {
     name: "Telemundo",
-    url: "https://xyzstreams-6h9.pages.dev/embed.html?id=telemundo-xyz-waUvqaAACr"
+    url: "https://vileembeds.pages.dev/embed/telemundo-usa"
   },
   //    {
   //   name: "UNIVERSO",
@@ -45,7 +61,7 @@ const channels = [
   // },
   {
     name: "FOX 4K",
-    url: "https://xyzstreams-6h9.pages.dev/embed.html?id=fox4k-usa"
+    url: "https://vileembeds.pages.dev/embed/fox4k-usa"
   },
   //   {
   //   name: "BEIN MAX 4K",
@@ -53,7 +69,11 @@ const channels = [
   // },
 {
     name: "FUSBALL.TV1 4K",
-    url: "https://xyzstreams-6h9.pages.dev/embed.html?id=fussballtv1uhd-de"
+    url: "https://vileembeds.pages.dev/embed/fussballtv1uhd-de"
+  },
+     {
+    name: "FUSBALL.TV1 4K NC",
+    url: "https://vileembeds.pages.dev/embed/fussballtvuhd-de"
   },
   //   {
   //   name: "Telemundo 4K",
