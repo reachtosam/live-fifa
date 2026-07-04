@@ -1,64 +1,64 @@
 const channels = [
      {
     name: "TSN",
-    url: "https://xyzstreams.st/wc-7-embed.html"
+    url: "https://xyzstreams-6h9.pages.dev/embed.html?id=tsn1-xyz-waUvqaAACr"
   },
-     {
-    name: "FS1",
-    url: "https://xyzstreams.st/wc-2-embed.html"
-  },
+  //    {
+  //   name: "FS1",
+  //   url: "https://xyzstreams.st/wc-2-embed.html"
+  // },
      {
     name: "FOX",
-    url: "https://xyzstreams.st/wc-1-embed.html"
+    url: "https://xyzstreams-6h9.pages.dev/embed.html?id=fox-xyz-waUvqaAAC"
   },
-{
-    name: "STV",
-    url: "https://xyzstreams.st/wc-3-embed.html"
-  },
+// {
+//     name: "STV",
+//     url: "https://xyzstreams.st/wc-3-embed.html"
+//   },
      {
     name: "ITV 4",
-    url: "https://xyzstreams.st/wc-15-embed.html"
+    url: "https://xyzstreams-6h9.pages.dev/embed.html?id=itv-xyz-waUvqaAACr"
   },
-  {
-    name: "BBC",
-    url: "https://xyzstreams.st/wc-4-embed.html"
-  },
+  // {
+  //   name: "BBC",
+  //   url: "https://xyzstreams.st/wc-4-embed.html"
+  // },
 {
-    name: "beIN MAX",
-    url: "https://xyzstreams.st/wc-17-embed.html"
+    name: "beIN Sports 1",
+    url: "https://xyzstreams-6h9.pages.dev/embed.html?id=bein12fr-xyz"
   },
 {
     name: "Telemundo",
-    url: "https://xyzstreams.st/wc-6-embed.html"
+    url: "https://xyzstreams-6h9.pages.dev/embed.html?id=telemundo-xyz-waUvqaAACr"
   },
-     {
-    name: "UNIVERSO",
-    url: "https://xyzstreams.st/wc-19-embed.html"
-  },
+  //    {
+  //   name: "UNIVERSO",
+  //   url: "https://xyzstreams.st/wc-19-embed.html"
+  // },
     {
     name: "TSN 4K",
-    url: "https://xyzstreams.st/wc-8-embed.html"
+    url: "https://xyzstreams-6h9.pages.dev/embed.html?id=tsn4k-xyz-waUvqaAACr"
   },
-     {
-    name: "FS1 4K",
-    url: "https://xyzstreams.st/wc-fs14k-embed.html"
-  },
+  //    {
+  //   name: "FS1 4K",
+  //   url: "https://xyzstreams.st/wc-fs14k-embed.html"
+  // },
   {
     name: "FOX 4K",
-    url: "https://xyzstreams.st/wc-5-embed.html"
+    url: "https://xyzstreams-6h9.pages.dev/embed.html?id=fox4k-usa"
   },
-    {
-    name: "BEIN MAX 4K",
-    url: "https://xyzstreams.st/wc-10-embed.html"
-  },
+  //   {
+  //   name: "BEIN MAX 4K",
+  //   url: "https://xyzstreams.st/wc-10-embed.html"
+  // },
 {
     name: "FUSBALL.TV1 4K",
-    url: "https://xyzstreams.st/wc-14-embed.html"
+    url: "https://xyzstreams-6h9.pages.dev/embed.html?id=fussballtv1uhd-de"
   },
-    {
-    name: "Telemundo 4K",
-    url: "https://xyzstreams.st/wc-12-embed.html"
-  },
+  //   {
+  //   name: "Telemundo 4K",
+  //   url: "https://xyzstreams.st/wc-12-embed.html"
+  // },
 ];
 
 const channelList = document.getElementById("channelList");
