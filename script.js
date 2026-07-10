@@ -1,7 +1,7 @@
 const channels = [
   {
     name: "TSN",
-    url: "https://player.xyzstreams.st/embed/tsn1-xyz-waUvqaAACr"
+    url: "https://embedindia.st/embed/wc/2026-07-10/esp-bel"
   },
   // {
   //   name: "FS1",
@@ -9,7 +9,7 @@ const channels = [
   // },
   {
     name: "FOX",
-    url: "https://vileembeds.pages.dev/embed/fox-usa"
+    url: "https://embedindia.st/embed/wc/2026-07-10/esp-bel/fox"
   },
   // {
   //   name: "STV",
@@ -17,19 +17,19 @@ const channels = [
   // },
   {
     name: "DAZN",
-    url: "https://ritzembeds.pages.dev/embed/daznmundial-es"
+    url: "https://embedindia.st/embed/wc/2026-07-10/esp-bel/dazn-spain"
   },
-  {
-    name: "DSports",
-    url: "https://vileembeds.pages.dev/embed/dsports-ar"
-  },
+  // {
+  //   name: "DSports",
+  //   url: "https://vileembeds.pages.dev/embed/dsports-ar"
+  // },
   {
     name: "CazeTV",
     url: "https://ritzembeds.pages.dev/embed/cazetv-br"
   },
   {
     name: "BBC",
-    url: "https://ritzembeds.pages.dev/embed/bbcone-uk"
+    url: "https://embedindia.st/embed/wc/2026-07-10/esp-bel/uk"
   },
   // {
   //   name: "BBC",
@@ -45,7 +45,7 @@ const channels = [
   },
   {
     name: "Telemundo",
-    url: "https://vileembeds.pages.dev/embed/telemund0-usa"
+    url: "https://embedindia.st/embed/wc/2026-07-10/esp-bel/telemundo"
   },
   // {
   //   name: "UNIVERSO",
@@ -55,25 +55,29 @@ const channels = [
     name: "TSN 4K",
     url: "https://ritzembeds.pages.dev/embed/tsn-4k"
   },
-  {
-    name: "BBC 4K",
-    url: "https://vileembeds.pages.dev/embed/bbc-4k-2"
-  },
+  // {
+  //   name: "BBC 4K",
+  //   url: "https://vileembeds.pages.dev/embed/bbc-4k-2"
+  // },
   {
     name: "FOX 4K",
-    url: "https://player.xyzstreams.st/embed/fox4k-usa"
+    url: "https://embedindia.st/embed/wc/2026-07-10/esp-bel/fox-4k-hevc"
   },
   {
     name: "BEIN MAX 4K",
     url: "https://ritzembeds.pages.dev/embed/beinsportsuhd-sa"
   },
   {
+    name: "Telemundo 4K",
+    url: "https://embedindia.st/embed/wc/2026-07-10/esp-bel/peacock-4k-hevc"
+  },
+  {
     name: "FUSBALL.TV1 4K",
-    url: "https://vileembeds.pages.dev/embed/fussballtv1uhd-de"
+    url: "https://embedindia.st/embed/wc/2026-07-10/esp-bel/fussballtv-4k-hevc"
   },
   {
     name: "FUSBALL.TV1 4K NC",
-    url: "https://vileembeds.pages.dev/embed/fussballtvuhd-de"
+    url: "https://embedindia.st/embed/wc/2026-07-10/esp-bel/fussballtv-4k-no-commentary-hevc"
   },
   // {
   //   name: "Telemundo 4K",
