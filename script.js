@@ -1,7 +1,7 @@
 const channels = [
   {
     name: "TSN",
-    url: "https://vileembeds.pages.dev/embed/tsn1-ca"
+    url: "https://player.xyzstreams.st/embed/tsn1-xyz-waUvqaAACr"
   },
   // {
   //   name: "FS1",
@@ -17,7 +17,7 @@ const channels = [
   // },
   {
     name: "DAZN",
-    url: "https://vileembeds.pages.dev/embed/daznmundial-es"
+    url: "https://ritzembeds.pages.dev/embed/daznmundial-es"
   },
   {
     name: "DSports",
@@ -25,11 +25,11 @@ const channels = [
   },
   {
     name: "CazeTV",
-    url: "https://vileembeds.pages.dev/embed/cazetv-br"
+    url: "https://ritzembeds.pages.dev/embed/cazetv-br"
   },
   {
     name: "BBC",
-    url: "https://vileembeds.pages.dev/embed/bbcone-uk"
+    url: "https://ritzembeds.pages.dev/embed/bbcone-uk"
   },
   // {
   //   name: "BBC",
@@ -41,7 +41,7 @@ const channels = [
   // },
   {
     name: "beIN Sports MAX",
-    url: "https://vileembeds.pages.dev/embed/beinsportsmax-sa"
+    url: "https://ritzembeds.pages.dev/embed/beinsportsmax-sa"
   },
   {
     name: "Telemundo",
@@ -53,7 +53,7 @@ const channels = [
   // },
   {
     name: "TSN 4K",
-    url: "https://vileembeds.pages.dev/embed/tsn-4k"
+    url: "https://ritzembeds.pages.dev/embed/tsn-4k"
   },
   {
     name: "BBC 4K",
@@ -61,11 +61,11 @@ const channels = [
   },
   {
     name: "FOX 4K",
-    url: "https://vileembeds.pages.dev/embed/fox4k-usa"
+    url: "https://player.xyzstreams.st/embed/fox4k-usa"
   },
   {
     name: "BEIN MAX 4K",
-    url: "https://vileembeds.pages.dev/embed/beinsportsuhd-sa"
+    url: "https://ritzembeds.pages.dev/embed/beinsportsuhd-sa"
   },
   {
     name: "FUSBALL.TV1 4K",
