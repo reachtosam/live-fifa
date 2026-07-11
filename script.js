@@ -1,145 +1,271 @@
-const channels = [
-  {
-    name: "TSN",
-    url: "https://embedindia.st/embed/wc/2026-07-10/esp-bel"
-  },
-  // {
-  //   name: "FS1",
-  //   url: "https://xyzstreams.st/wc-2-embed.html"
-  // },
-  {
-    name: "FOX",
-    url: "https://embedindia.st/embed/wc/2026-07-10/esp-bel/fox"
-  },
-  // {
-  //   name: "STV",
-  //   url: "https://xyzstreams.st/wc-3-embed.html"
-  // },
-  {
-    name: "DAZN",
-    url: "https://embedindia.st/embed/wc/2026-07-10/esp-bel/dazn-spain"
-  },
-  // {
-  //   name: "DSports",
-  //   url: "https://vileembeds.pages.dev/embed/dsports-ar"
-  // },
-  {
-    name: "CazeTV",
-    url: "https://ritzembeds.pages.dev/embed/cazetv-br"
-  },
-  {
-    name: "BBC",
-    url: "https://embedindia.st/embed/wc/2026-07-10/esp-bel/uk"
-  },
-  // {
-  //   name: "BBC",
-  //   url: "https://xyzstreams.st/wc-4-embed.html"
-  // },
-  // {
-  //   name: "beIN Sports 1",
-  //   url: "https://xyzstreams-6h9.pages.dev/embed.html?id=bein12fr-xyz"
-  // },
-  {
-    name: "beIN Sports MAX",
-    url: "https://ritzembeds.pages.dev/embed/beinsportsmax-sa"
-  },
-  {
-    name: "Telemundo",
-    url: "https://embedindia.st/embed/wc/2026-07-10/esp-bel/telemundo"
-  },
-  // {
-  //   name: "UNIVERSO",
-  //   url: "https://xyzstreams.st/wc-19-embed.html"
-  // },
-  {
-    name: "TSN 4K",
-    url: "https://ritzembeds.pages.dev/embed/tsn-4k"
-  },
-  // {
-  //   name: "BBC 4K",
-  //   url: "https://vileembeds.pages.dev/embed/bbc-4k-2"
-  // },
-  {
-    name: "FOX 4K",
-    url: "https://embedindia.st/embed/wc/2026-07-10/esp-bel/fox-4k-hevc"
-  },
-  {
-    name: "BEIN MAX 4K",
-    url: "https://ritzembeds.pages.dev/embed/beinsportsuhd-sa"
-  },
-  {
-    name: "Telemundo 4K",
-    url: "https://embedindia.st/embed/wc/2026-07-10/esp-bel/peacock-4k-hevc"
-  },
-  {
-    name: "FUSBALL.TV1 4K",
-    url: "https://embedindia.st/embed/wc/2026-07-10/esp-bel/fussballtv-4k-hevc"
-  },
-  {
-    name: "FUSBALL.TV1 4K NC",
-    url: "https://embedindia.st/embed/wc/2026-07-10/esp-bel/fussballtv-4k-no-commentary-hevc"
-  },
-  // {
-  //   name: "Telemundo 4K",
-  //   url: "https://xyzstreams.st/wc-12-embed.html"
-  // },
-];
-
-const channelList = document.getElementById("channelList");
-const player = document.getElementById("player");
-const channelTitle = document.getElementById("channelTitle");
-
-const menuBtn = document.getElementById("menuBtn");
 const sidebar = document.getElementById("sidebar");
 const overlay = document.getElementById("overlay");
+const menuBtn = document.getElementById("menuBtn");
 
-let activeIndex = 0;
+const channelList = document.getElementById("channelList");
+const categorySelect = document.getElementById("categorySelect");
 
-function renderChannels() {
-  channelList.innerHTML = "";
+const player = document.getElementById("player");
+const title = document.getElementById("channelTitle");
 
-  channels.forEach((channel, index) => {
-    const div = document.createElement("div");
-    div.className = "channel" + (index === activeIndex ? " active" : "");
-    div.textContent = channel.name;
 
-    div.onclick = () => loadChannel(index);
+let allChannels = [];
 
-    channelList.appendChild(div);
-  });
+
+// mobile menu
+
+menuBtn.onclick = ()=>{
+
+sidebar.classList.add("open");
+overlay.classList.add("show");
+
+};
+
+
+overlay.onclick = ()=>{
+
+sidebar.classList.remove("open");
+overlay.classList.remove("show");
+
+};
+
+
+
+
+// Load API
+
+async function loadChannels(){
+
+
+try{
+
+
+const response = await fetch("api.json");
+
+
+if(!response.ok){
+
+throw new Error("API not found");
+
 }
 
-function closeMobileMenu() {
-  if (window.innerWidth <= 768) {
-    sidebar.classList.remove("open");
-    overlay.classList.remove("show");
-  }
+
+const data = await response.json();
+
+
+
+let categories = new Set();
+
+
+
+data.forEach(category=>{
+
+
+categories.add(category.category);
+
+
+
+category.streams.forEach(match=>{
+
+
+// main event stream
+
+if(match.iframe){
+
+
+allChannels.push({
+
+category:category.category,
+
+name:match.name,
+
+source:match.source_tag || match.tag || "Main",
+
+url:match.iframe
+
+});
+
+
 }
 
-function loadChannel(index) {
-  activeIndex = index;
-  player.src = channels[index].url;
-  channelTitle.textContent = channels[index].name;
 
-  renderChannels();
-  closeMobileMenu();
+
+// sub streams
+
+if(match.substreams){
+
+
+match.substreams.forEach(sub=>{
+
+
+allChannels.push({
+
+category:category.category,
+
+name:match.name,
+
+source:sub.source_tag || sub.tag,
+
+url:sub.iframe
+
+});
+
+
+});
+
+
 }
 
-menuBtn.addEventListener("click", () => {
-  sidebar.classList.toggle("open");
-  overlay.classList.toggle("show");
+
+
 });
 
-overlay.addEventListener("click", () => {
-  closeMobileMenu();
+
 });
 
-window.addEventListener("resize", () => {
-  if (window.innerWidth > 768) {
-    sidebar.classList.remove("open");
-    overlay.classList.remove("show");
-  }
+
+
+// add categories
+
+categories.forEach(cat=>{
+
+
+let option=document.createElement("option");
+
+option.value=cat;
+
+option.textContent=cat;
+
+categorySelect.appendChild(option);
+
+
 });
 
-renderChannels();
-loadChannel(0);
+
+
+showChannels(allChannels);
+
+
+
+console.log("Loaded channels:",allChannels);
+
+
+
+}
+catch(err){
+
+
+console.error(err);
+
+channelList.innerHTML=
+"<p style='padding:15px;color:red'>Failed loading channels</p>";
+
+
+}
+
+
+
+}
+
+
+
+
+function showChannels(channels){
+
+
+channelList.innerHTML="";
+
+
+channels.forEach((channel,index)=>{
+
+
+let div=document.createElement("div");
+
+div.className="channel";
+
+
+div.innerHTML=`
+
+<strong>${channel.source}</strong>
+<br>
+<small>${channel.name}</small>
+
+`;
+
+
+
+div.onclick=()=>{
+
+
+document.querySelectorAll(".channel")
+.forEach(x=>x.classList.remove("active"));
+
+
+div.classList.add("active");
+
+
+player.src=channel.url;
+
+
+title.innerHTML=
+channel.source+" - "+channel.name;
+
+
+
+sidebar.classList.remove("open");
+overlay.classList.remove("show");
+
+
+};
+
+
+
+channelList.appendChild(div);
+
+
+
+});
+
+
+}
+
+
+
+// category filter
+
+
+categorySelect.onchange=function(){
+
+
+let value=this.value;
+
+
+if(value===""){
+
+
+showChannels(allChannels);
+
+
+}
+else{
+
+
+showChannels(
+
+allChannels.filter(
+x=>x.category===value
+)
+
+);
+
+
+}
+
+
+
+};
+
+
+
+
+loadChannels();
