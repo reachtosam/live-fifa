@@ -14,48 +14,42 @@ let allChannels = [];
 
 // mobile menu
 
+if(menuBtn){
 menuBtn.onclick = ()=>{
 
 sidebar.classList.add("open");
 overlay.classList.add("show");
 
 };
+}
 
 
+if(overlay){
 overlay.onclick = ()=>{
 
 sidebar.classList.remove("open");
 overlay.classList.remove("show");
 
 };
-
-
+}
 
 
 // Load API
 
 async function loadChannels(){
 
-
 try{
-
 
 const response = await fetch("api.json");
 
-
 if(!response.ok){
-
 throw new Error("API not found");
-
 }
 
 
 const data = await response.json();
 
-
-
 let categories = new Set();
-
 
 
 data.forEach(category=>{
@@ -64,60 +58,53 @@ data.forEach(category=>{
 categories.add(category.category);
 
 
-
 category.streams.forEach(match=>{
 
 
-// main event stream
+// main stream
 
 if(match.iframe){
 
-
 allChannels.push({
 
-category:category.category,
+category: category.category,
 
-name:match.name,
+name: match.name,
 
-source:match.source_tag || match.tag || "Main",
+source: match.source_tag || match.tag || "Main",
 
-url:match.iframe
+url: match.iframe
 
 });
-
 
 }
 
 
-
-// sub streams
+// substreams
 
 if(match.substreams){
-
 
 match.substreams.forEach(sub=>{
 
 
 allChannels.push({
 
-category:category.category,
+category: category.category,
 
-name:match.name,
+name: match.name,
 
-source:sub.source_tag || sub.tag,
+source: sub.source_tag || sub.tag,
 
-url:sub.iframe
-
-});
-
+url: sub.iframe
 
 });
 
+
+});
 
 }
 
 
-
 });
 
 
@@ -125,10 +112,11 @@ url:sub.iframe
 
 
 
-// add categories
+// Add categories only if dropdown exists
+
+if(categorySelect){
 
 categories.forEach(cat=>{
-
 
 let option=document.createElement("option");
 
@@ -138,45 +126,47 @@ option.textContent=cat;
 
 categorySelect.appendChild(option);
 
-
 });
+
+}
 
 
 
 showChannels(allChannels);
 
 
-
 console.log("Loaded channels:",allChannels);
 
 
-
 }
-catch(err){
 
+catch(err){
 
 console.error(err);
 
-channelList.innerHTML=
+if(channelList){
+
+channelList.innerHTML =
 "<p style='padding:15px;color:red'>Failed loading channels</p>";
 
+}
 
 }
 
-
-
 }
-
 
 
 
 function showChannels(channels){
 
 
+if(!channelList) return;
+
+
 channelList.innerHTML="";
 
 
-channels.forEach((channel,index)=>{
+channels.forEach(channel=>{
 
 
 let div=document.createElement("div");
@@ -204,15 +194,20 @@ document.querySelectorAll(".channel")
 div.classList.add("active");
 
 
+if(player)
 player.src=channel.url;
 
 
-title.innerHTML=
+if(title)
+title.innerHTML =
 channel.source+" - "+channel.name;
 
 
-
+if(sidebar)
 sidebar.classList.remove("open");
+
+
+if(overlay)
 overlay.classList.remove("show");
 
 
@@ -223,7 +218,6 @@ overlay.classList.remove("show");
 channelList.appendChild(div);
 
 
-
 });
 
 
@@ -231,8 +225,10 @@ channelList.appendChild(div);
 
 
 
+
 // category filter
 
+if(categorySelect){
 
 categorySelect.onchange=function(){
 
@@ -242,11 +238,10 @@ let value=this.value;
 
 if(value===""){
 
-
 showChannels(allChannels);
 
-
 }
+
 else{
 
 
@@ -262,9 +257,9 @@ x=>x.category===value
 }
 
 
-
 };
 
+}
 
 
 
