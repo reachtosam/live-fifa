@@ -47,7 +47,16 @@ throw new Error("API not found");
 }
 
 
-const data = await response.json();
+// const data = await response.json();
+  let data = await response.json();
+
+
+// support wrapped API formats
+if(!Array.isArray(data)){
+
+    data = data.categories || data.data || data.streams || [];
+
+}
 
 let categories = new Set();
 
