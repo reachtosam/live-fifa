@@ -1,6 +1,7 @@
 const sidebar = document.getElementById("sidebar");
 const overlay = document.getElementById("overlay");
 const menuBtn = document.getElementById("menuBtn");
+const searchInput = document.getElementById("searchInput");
 
 const channelList = document.getElementById("channelList");
 const categorySelect = document.getElementById("categorySelect");
@@ -37,6 +38,26 @@ if(overlay){
 
 }
 
+//Search
+searchInput.oninput = function(){
+
+    let text = this.value.toLowerCase();
+
+
+    let filtered = allChannels.filter(channel =>
+
+        channel.name.toLowerCase().includes(text) ||
+
+        channel.source.toLowerCase().includes(text) ||
+
+        channel.category.toLowerCase().includes(text)
+
+    );
+
+
+    showChannels(filtered);
+
+};
 
 
 // Load API
