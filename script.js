@@ -1,8 +1,8 @@
 const sidebar = document.getElementById("sidebar");
 const overlay = document.getElementById("overlay");
 const menuBtn = document.getElementById("menuBtn");
-const searchInput = document.getElementById("searchInput");
 
+const searchInput = document.getElementById("searchInput");
 const channelList = document.getElementById("channelList");
 const categorySelect = document.getElementById("categorySelect");
 
@@ -11,6 +11,8 @@ const title = document.getElementById("channelTitle");
 
 
 let allChannels = [];
+let selectedCategory = "";
+
 
 
 // Mobile menu
@@ -38,280 +40,117 @@ if(overlay){
 
 }
 
-//Search
-searchInput.oninput = function(){
 
-    let text = this.value.toLowerCase();
 
 
-    let filtered = allChannels.filter(channel =>
+// SEARCH
 
-        channel.name.toLowerCase().includes(text) ||
+if(searchInput){
 
-        channel.source.toLowerCase().includes(text) ||
+    searchInput.oninput = ()=>{
 
-        channel.category.toLowerCase().includes(text)
+        applyFilters();
 
-    );
-
-
-    showChannels(filtered);
-
-};
-
-
-// Load API
-
-async function loadChannels(){
-
-    try{
-
-        const response = await fetch("api.json");
-
-
-        if(!response.ok){
-
-            throw new Error("API not found");
-
-        }
-
-
-        const json = await response.json();
-
-
-        // Your API stores categories inside "streams"
-
-        const data = json.streams || [];
-
-
-
-        let categories = new Set();
-
-
-
-        data.forEach(category=>{
-
-
-            categories.add(category.category);
-
-
-
-            category.streams.forEach(match=>{
-
-
-                // Main stream
-                if(match.iframe){
-
-
-                    allChannels.push({
-
-                        category: category.category,
-
-                        name: match.name,
-
-                        source: match.source_tag || match.tag || "Main",
-
-                        url: match.iframe
-
-                    });
-
-
-                }
-
-
-
-                // Substreams (FOX 4K, languages, etc.)
-
-                if(match.substreams && match.substreams.length){
-
-
-                    match.substreams.forEach(sub=>{
-
-
-                        allChannels.push({
-
-                            category: category.category,
-
-                            name: match.name,
-
-                            source: sub.source_tag || sub.tag || "Sub",
-
-                            url: sub.iframe
-
-                        });
-
-
-                    });
-
-
-                }
-
-
-
-            });
-
-
-        });
-
-
-
-
-        // Add categories to dropdown
-
-        if(categorySelect){
-
-
-            categorySelect.innerHTML =
-            `<option value="">All Categories</option>`;
-
-
-            categories.forEach(cat=>{
-
-
-                let option=document.createElement("option");
-
-
-                option.value=cat;
-
-                option.textContent=cat;
-
-
-                categorySelect.appendChild(option);
-
-
-            });
-
-
-        }
-
-
-
-        showChannels(allChannels);
-
-
-
-        console.log("Categories:", [...categories]);
-
-        console.log("Channels loaded:", allChannels);
-
-
-
-    }
-    catch(error){
-
-
-        console.error("API Error:",error);
-
-
-        if(channelList){
-
-            channelList.innerHTML =
-            `<p style="padding:15px;color:red">
-            Failed loading channels
-            </p>`;
-
-        }
-
-
-    }
-
+    };
 
 }
 
 
 
 
+// LOAD API
 
-function showChannels(channels){
+async function loadChannels(){
 
-
-    if(!channelList) return;
-
-
-    channelList.innerHTML="";
+try{
 
 
-
-    channels.forEach(channel=>{
-
-
-        let div=document.createElement("div");
+const response = await fetch("api.json");
 
 
-        div.className="channel";
+if(!response.ok){
+
+    throw new Error("API not found");
+
+}
 
 
+const json = await response.json();
 
-        div.innerHTML=`
 
-            <strong>${channel.source}</strong>
+// API categories are inside streams
 
-            <br>
-
-            <small>${channel.name}</small>
-
-            <br>
-
-            <small style="color:#94a3b8">
-            ${channel.category}
-            </small>
-
-        `;
+const categoriesData = json.streams || [];
 
 
 
-
-        div.onclick=()=>{
-
-
-            document
-            .querySelectorAll(".channel")
-            .forEach(x=>x.classList.remove("active"));
+let categories = new Set();
 
 
 
-            div.classList.add("active");
+allChannels = [];
 
 
 
-            if(player){
-
-                player.src=channel.url;
-
-            }
+categoriesData.forEach(category=>{
 
 
-
-            if(title){
-
-                title.innerHTML =
-                channel.source + " - " + channel.name;
-
-            }
+    categories.add(category.category);
 
 
 
-            if(sidebar){
-
-                sidebar.classList.remove("open");
-
-            }
+    category.streams.forEach(match=>{
 
 
 
-            if(overlay){
+        // Main stream
 
-                overlay.classList.remove("show");
-
-            }
+        if(match.iframe){
 
 
+            allChannels.push({
 
-        };
+                category: category.category,
+
+                name: match.name,
+
+                source: match.source_tag || match.tag || "Main",
+
+                url: match.iframe
+
+            });
+
+
+        }
 
 
 
-        channelList.appendChild(div);
+
+        // Sub streams
+
+        if(match.substreams && match.substreams.length){
+
+
+            match.substreams.forEach(sub=>{
+
+
+                allChannels.push({
+
+                    category: category.category,
+
+                    name: match.name,
+
+                    source: sub.source_tag || sub.tag || "Sub",
+
+                    url: sub.iframe
+
+                });
+
+
+            });
+
+
+        }
 
 
 
@@ -319,51 +158,275 @@ function showChannels(channels){
 
 
 
-}
+});
 
 
 
 
 
-// Category filter
+// Dropdown
 
 if(categorySelect){
 
 
-    categorySelect.onchange=function(){
+categorySelect.innerHTML =
+`
+<option value="">All Categories</option>
+`;
 
 
-        let value=this.value;
+
+categories.forEach(cat=>{
 
 
-
-        if(value===""){
-
-
-            showChannels(allChannels);
+let option=document.createElement("option");
 
 
-        }
-        else{
+option.value = cat;
+
+option.textContent = cat;
 
 
-            showChannels(
-
-                allChannels.filter(
-                    channel=>channel.category===value
-                )
-
-            );
+categorySelect.appendChild(option);
 
 
-        }
-
-
-    };
+});
 
 
 }
 
+
+
+
+
+showChannels(allChannels);
+
+
+
+console.log("Categories:", [...categories]);
+
+console.log("Channels loaded:", allChannels);
+
+
+
+}
+catch(error){
+
+
+console.error("API Error:",error);
+
+
+if(channelList){
+
+channelList.innerHTML =
+`
+<p style="padding:15px;color:red">
+Failed loading channels
+</p>
+`;
+
+}
+
+
+}
+
+
+
+}
+
+
+
+
+
+// APPLY SEARCH + CATEGORY FILTER
+
+function applyFilters(){
+
+
+let filtered = allChannels;
+
+
+
+// category
+
+if(selectedCategory !== ""){
+
+
+filtered = filtered.filter(channel =>
+
+channel.category === selectedCategory
+
+);
+
+
+}
+
+
+
+
+// search
+
+if(searchInput && searchInput.value.trim() !== ""){
+
+
+let text = searchInput.value.toLowerCase();
+
+
+
+filtered = filtered.filter(channel =>
+
+
+channel.name.toLowerCase().includes(text)
+
+||
+
+channel.source.toLowerCase().includes(text)
+
+||
+
+channel.category.toLowerCase().includes(text)
+
+
+);
+
+
+}
+
+
+
+
+showChannels(filtered);
+
+
+
+}
+
+
+
+
+
+// SHOW CHANNELS
+
+function showChannels(channels){
+
+
+if(!channelList) return;
+
+
+
+channelList.innerHTML = "";
+
+
+
+channels.forEach(channel=>{
+
+
+let div=document.createElement("div");
+
+
+div.className="channel";
+
+
+
+div.innerHTML = `
+
+<strong>${channel.source}</strong>
+
+<br>
+
+<small>${channel.name}</small>
+
+<br>
+
+<small style="color:#94a3b8">
+${channel.category}
+</small>
+
+`;
+
+
+
+div.onclick = ()=>{
+
+
+document.querySelectorAll(".channel")
+.forEach(x=>x.classList.remove("active"));
+
+
+
+div.classList.add("active");
+
+
+
+if(player){
+
+player.src = channel.url;
+
+}
+
+
+
+if(title){
+
+title.textContent =
+channel.source + " - " + channel.name;
+
+}
+
+
+
+if(sidebar){
+
+sidebar.classList.remove("open");
+
+}
+
+
+if(overlay){
+
+overlay.classList.remove("show");
+
+}
+
+
+
+};
+
+
+
+channelList.appendChild(div);
+
+
+
+});
+
+
+
+}
+
+
+
+
+
+// CATEGORY CHANGE
+
+if(categorySelect){
+
+
+categorySelect.onchange = function(){
+
+
+selectedCategory = this.value;
+
+
+applyFilters();
+
+
+
+};
+
+
+}
 
 
 
