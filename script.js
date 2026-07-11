@@ -12,222 +12,290 @@ const title = document.getElementById("channelTitle");
 let allChannels = [];
 
 
-// mobile menu
+// Mobile menu
 
 if(menuBtn){
-menuBtn.onclick = ()=>{
 
-sidebar.classList.add("open");
-overlay.classList.add("show");
+    menuBtn.onclick = ()=>{
 
-};
+        sidebar.classList.add("open");
+        overlay.classList.add("show");
+
+    };
+
 }
 
 
 if(overlay){
-overlay.onclick = ()=>{
 
-sidebar.classList.remove("open");
-overlay.classList.remove("show");
+    overlay.onclick = ()=>{
 
-};
+        sidebar.classList.remove("open");
+        overlay.classList.remove("show");
+
+    };
+
 }
+
 
 
 // Load API
 
 async function loadChannels(){
 
-try{
+    try{
 
-const response = await fetch("api.json");
+        const response = await fetch("api.json");
 
-if(!response.ok){
-throw new Error("API not found");
+
+        if(!response.ok){
+
+            throw new Error("API not found");
+
+        }
+
+
+        const json = await response.json();
+
+
+        // Your API stores categories inside "streams"
+
+        const data = json.streams || [];
+
+
+
+        let categories = new Set();
+
+
+
+        data.forEach(category=>{
+
+
+            categories.add(category.category);
+
+
+
+            category.streams.forEach(match=>{
+
+
+                // Main stream
+                if(match.iframe){
+
+
+                    allChannels.push({
+
+                        category: category.category,
+
+                        name: match.name,
+
+                        source: match.source_tag || match.tag || "Main",
+
+                        url: match.iframe
+
+                    });
+
+
+                }
+
+
+
+                // Substreams (FOX 4K, languages, etc.)
+
+                if(match.substreams && match.substreams.length){
+
+
+                    match.substreams.forEach(sub=>{
+
+
+                        allChannels.push({
+
+                            category: category.category,
+
+                            name: match.name,
+
+                            source: sub.source_tag || sub.tag || "Sub",
+
+                            url: sub.iframe
+
+                        });
+
+
+                    });
+
+
+                }
+
+
+
+            });
+
+
+        });
+
+
+
+
+        // Add categories to dropdown
+
+        if(categorySelect){
+
+
+            categorySelect.innerHTML =
+            `<option value="">All Categories</option>`;
+
+
+            categories.forEach(cat=>{
+
+
+                let option=document.createElement("option");
+
+
+                option.value=cat;
+
+                option.textContent=cat;
+
+
+                categorySelect.appendChild(option);
+
+
+            });
+
+
+        }
+
+
+
+        showChannels(allChannels);
+
+
+
+        console.log("Categories:", [...categories]);
+
+        console.log("Channels loaded:", allChannels);
+
+
+
+    }
+    catch(error){
+
+
+        console.error("API Error:",error);
+
+
+        if(channelList){
+
+            channelList.innerHTML =
+            `<p style="padding:15px;color:red">
+            Failed loading channels
+            </p>`;
+
+        }
+
+
+    }
+
+
 }
 
 
-// const data = await response.json();
-  let data = await response.json();
-
-
-// support wrapped API formats
-if(!Array.isArray(data)){
-
-    data = data.categories || data.data || data.streams || [];
-
-}
-
-let categories = new Set();
-
-
-data.forEach(category=>{
-
-
-categories.add(category.category);
-
-
-category.streams.forEach(match=>{
-
-
-// main stream
-
-if(match.iframe){
-
-allChannels.push({
-
-category: category.category,
-
-name: match.name,
-
-source: match.source_tag || match.tag || "Main",
-
-url: match.iframe
-
-});
-
-}
-
-
-// substreams
-
-if(match.substreams){
-
-match.substreams.forEach(sub=>{
-
-
-allChannels.push({
-
-category: category.category,
-
-name: match.name,
-
-source: sub.source_tag || sub.tag,
-
-url: sub.iframe
-
-});
-
-
-});
-
-}
-
-
-});
-
-
-});
-
-
-
-// Add categories only if dropdown exists
-
-if(categorySelect){
-
-categories.forEach(cat=>{
-
-let option=document.createElement("option");
-
-option.value=cat;
-
-option.textContent=cat;
-
-categorySelect.appendChild(option);
-
-});
-
-}
-
-
-
-showChannels(allChannels);
-
-
-console.log("Loaded channels:",allChannels);
-
-
-}
-
-catch(err){
-
-console.error(err);
-
-if(channelList){
-
-channelList.innerHTML =
-"<p style='padding:15px;color:red'>Failed loading channels</p>";
-
-}
-
-}
-
-}
 
 
 
 function showChannels(channels){
 
 
-if(!channelList) return;
+    if(!channelList) return;
 
 
-channelList.innerHTML="";
-
-
-channels.forEach(channel=>{
-
-
-let div=document.createElement("div");
-
-div.className="channel";
-
-
-div.innerHTML=`
-
-<strong>${channel.source}</strong>
-<br>
-<small>${channel.name}</small>
-
-`;
+    channelList.innerHTML="";
 
 
 
-div.onclick=()=>{
+    channels.forEach(channel=>{
 
 
-document.querySelectorAll(".channel")
-.forEach(x=>x.classList.remove("active"));
+        let div=document.createElement("div");
 
 
-div.classList.add("active");
-
-
-if(player)
-player.src=channel.url;
-
-
-if(title)
-title.innerHTML =
-channel.source+" - "+channel.name;
-
-
-if(sidebar)
-sidebar.classList.remove("open");
-
-
-if(overlay)
-overlay.classList.remove("show");
-
-
-};
+        div.className="channel";
 
 
 
-channelList.appendChild(div);
+        div.innerHTML=`
+
+            <strong>${channel.source}</strong>
+
+            <br>
+
+            <small>${channel.name}</small>
+
+            <br>
+
+            <small style="color:#94a3b8">
+            ${channel.category}
+            </small>
+
+        `;
 
 
-});
+
+
+        div.onclick=()=>{
+
+
+            document
+            .querySelectorAll(".channel")
+            .forEach(x=>x.classList.remove("active"));
+
+
+
+            div.classList.add("active");
+
+
+
+            if(player){
+
+                player.src=channel.url;
+
+            }
+
+
+
+            if(title){
+
+                title.innerHTML =
+                channel.source + " - " + channel.name;
+
+            }
+
+
+
+            if(sidebar){
+
+                sidebar.classList.remove("open");
+
+            }
+
+
+
+            if(overlay){
+
+                overlay.classList.remove("show");
+
+            }
+
+
+
+        };
+
+
+
+        channelList.appendChild(div);
+
+
+
+    });
+
 
 
 }
@@ -235,40 +303,47 @@ channelList.appendChild(div);
 
 
 
-// category filter
+
+// Category filter
 
 if(categorySelect){
 
-categorySelect.onchange=function(){
+
+    categorySelect.onchange=function(){
 
 
-let value=this.value;
+        let value=this.value;
 
 
-if(value===""){
 
-showChannels(allChannels);
+        if(value===""){
+
+
+            showChannels(allChannels);
+
+
+        }
+        else{
+
+
+            showChannels(
+
+                allChannels.filter(
+                    channel=>channel.category===value
+                )
+
+            );
+
+
+        }
+
+
+    };
+
 
 }
 
-else{
 
-
-showChannels(
-
-allChannels.filter(
-x=>x.category===value
-)
-
-);
-
-
-}
-
-
-};
-
-}
 
 
 
