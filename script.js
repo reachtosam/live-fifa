@@ -1,434 +1,145 @@
+const channels = [
+  {
+    name: "TSN",
+    url: "https://embedindia.st/embed/wc/2026-07-10/esp-bel"
+  },
+  // {
+  //   name: "FS1",
+  //   url: "https://xyzstreams.st/wc-2-embed.html"
+  // },
+  {
+    name: "FOX",
+    url: "https://embedindia.st/embed/wc/2026-07-10/esp-bel/fox"
+  },
+  // {
+  //   name: "STV",
+  //   url: "https://xyzstreams.st/wc-3-embed.html"
+  // },
+  {
+    name: "DAZN",
+    url: "https://embedindia.st/embed/wc/2026-07-10/esp-bel/dazn-spain"
+  },
+  // {
+  //   name: "DSports",
+  //   url: "https://vileembeds.pages.dev/embed/dsports-ar"
+  // },
+  {
+    name: "CazeTV",
+    url: "https://ritzembeds.pages.dev/embed/cazetv-br"
+  },
+  {
+    name: "BBC",
+    url: "https://embedindia.st/embed/wc/2026-07-10/esp-bel/uk"
+  },
+  // {
+  //   name: "BBC",
+  //   url: "https://xyzstreams.st/wc-4-embed.html"
+  // },
+  // {
+  //   name: "beIN Sports 1",
+  //   url: "https://xyzstreams-6h9.pages.dev/embed.html?id=bein12fr-xyz"
+  // },
+  {
+    name: "beIN Sports MAX",
+    url: "https://ritzembeds.pages.dev/embed/beinsportsmax-sa"
+  },
+  {
+    name: "Telemundo",
+    url: "https://embedindia.st/embed/wc/2026-07-10/esp-bel/telemundo"
+  },
+  // {
+  //   name: "UNIVERSO",
+  //   url: "https://xyzstreams.st/wc-19-embed.html"
+  // },
+  {
+    name: "TSN 4K",
+    url: "https://ritzembeds.pages.dev/embed/tsn-4k"
+  },
+  // {
+  //   name: "BBC 4K",
+  //   url: "https://vileembeds.pages.dev/embed/bbc-4k-2"
+  // },
+  {
+    name: "FOX 4K",
+    url: "https://embedindia.st/embed/wc/2026-07-10/esp-bel/fox-4k-hevc"
+  },
+  {
+    name: "BEIN MAX 4K",
+    url: "https://ritzembeds.pages.dev/embed/beinsportsuhd-sa"
+  },
+  {
+    name: "Telemundo 4K",
+    url: "https://embedindia.st/embed/wc/2026-07-10/esp-bel/peacock-4k-hevc"
+  },
+  {
+    name: "FUSBALL.TV1 4K",
+    url: "https://embedindia.st/embed/wc/2026-07-10/esp-bel/fussballtv-4k-hevc"
+  },
+  {
+    name: "FUSBALL.TV1 4K NC",
+    url: "https://embedindia.st/embed/wc/2026-07-10/esp-bel/fussballtv-4k-no-commentary-hevc"
+  },
+  // {
+  //   name: "Telemundo 4K",
+  //   url: "https://xyzstreams.st/wc-12-embed.html"
+  // },
+];
+
+const channelList = document.getElementById("channelList");
+const player = document.getElementById("player");
+const channelTitle = document.getElementById("channelTitle");
+
+const menuBtn = document.getElementById("menuBtn");
 const sidebar = document.getElementById("sidebar");
 const overlay = document.getElementById("overlay");
-const menuBtn = document.getElementById("menuBtn");
 
-const searchInput = document.getElementById("searchInput");
-const channelList = document.getElementById("channelList");
-const categorySelect = document.getElementById("categorySelect");
+let activeIndex = 0;
 
-const player = document.getElementById("player");
-const title = document.getElementById("channelTitle");
+function renderChannels() {
+  channelList.innerHTML = "";
 
+  channels.forEach((channel, index) => {
+    const div = document.createElement("div");
+    div.className = "channel" + (index === activeIndex ? " active" : "");
+    div.textContent = channel.name;
 
-let allChannels = [];
-let selectedCategory = "";
+    div.onclick = () => loadChannel(index);
 
-
-
-// Mobile menu
-
-if(menuBtn){
-
-    menuBtn.onclick = ()=>{
-
-        sidebar.classList.add("open");
-        overlay.classList.add("show");
-
-    };
-
+    channelList.appendChild(div);
+  });
 }
 
-
-if(overlay){
-
-    overlay.onclick = ()=>{
-
-        sidebar.classList.remove("open");
-        overlay.classList.remove("show");
-
-    };
-
+function closeMobileMenu() {
+  if (window.innerWidth <= 768) {
+    sidebar.classList.remove("open");
+    overlay.classList.remove("show");
+  }
 }
 
+function loadChannel(index) {
+  activeIndex = index;
+  player.src = channels[index].url;
+  channelTitle.textContent = channels[index].name;
 
-
-
-// SEARCH
-
-if(searchInput){
-
-    searchInput.oninput = ()=>{
-
-        applyFilters();
-
-    };
-
+  renderChannels();
+  closeMobileMenu();
 }
 
-
-
-
-// LOAD API
-
-async function loadChannels(){
-
-try{
-
-
-const response = await fetch("api.json");
-
-
-if(!response.ok){
-
-    throw new Error("API not found");
-
-}
-
-
-const json = await response.json();
-
-
-// API categories are inside streams
-
-const categoriesData = json.streams || [];
-
-
-
-let categories = new Set();
-
-
-
-allChannels = [];
-
-
-
-categoriesData.forEach(category=>{
-
-
-    categories.add(category.category);
-
-
-
-    category.streams.forEach(match=>{
-
-
-
-        // Main stream
-
-        if(match.iframe){
-
-
-            allChannels.push({
-
-                category: category.category,
-
-                name: match.name,
-
-                source: match.source_tag || match.tag || "Main",
-
-                url: match.iframe
-
-            });
-
-
-        }
-
-
-
-
-        // Sub streams
-
-        if(match.substreams && match.substreams.length){
-
-
-            match.substreams.forEach(sub=>{
-
-
-                allChannels.push({
-
-                    category: category.category,
-
-                    name: match.name,
-
-                    source: sub.source_tag || sub.tag || "Sub",
-
-                    url: sub.iframe
-
-                });
-
-
-            });
-
-
-        }
-
-
-
-    });
-
-
-
+menuBtn.addEventListener("click", () => {
+  sidebar.classList.toggle("open");
+  overlay.classList.toggle("show");
 });
 
-
-
-
-
-// Dropdown
-
-if(categorySelect){
-
-
-categorySelect.innerHTML =
-`
-<option value="">All Categories</option>
-`;
-
-
-
-categories.forEach(cat=>{
-
-
-let option=document.createElement("option");
-
-
-option.value = cat;
-
-option.textContent = cat;
-
-
-categorySelect.appendChild(option);
-
-
+overlay.addEventListener("click", () => {
+  closeMobileMenu();
 });
 
-
-}
-
-
-
-
-
-showChannels(allChannels);
-
-
-
-console.log("Categories:", [...categories]);
-
-console.log("Channels loaded:", allChannels);
-
-
-
-}
-catch(error){
-
-
-console.error("API Error:",error);
-
-
-if(channelList){
-
-channelList.innerHTML =
-`
-<p style="padding:15px;color:red">
-Failed loading channels
-</p>
-`;
-
-}
-
-
-}
-
-
-
-}
-
-
-
-
-
-// APPLY SEARCH + CATEGORY FILTER
-
-function applyFilters(){
-
-
-let filtered = allChannels;
-
-
-
-// category
-
-if(selectedCategory !== ""){
-
-
-filtered = filtered.filter(channel =>
-
-channel.category === selectedCategory
-
-);
-
-
-}
-
-
-
-
-// search
-
-if(searchInput && searchInput.value.trim() !== ""){
-
-
-let text = searchInput.value.toLowerCase();
-
-
-
-filtered = filtered.filter(channel =>
-
-
-channel.name.toLowerCase().includes(text)
-
-||
-
-channel.source.toLowerCase().includes(text)
-
-||
-
-channel.category.toLowerCase().includes(text)
-
-
-);
-
-
-}
-
-
-
-
-showChannels(filtered);
-
-
-
-}
-
-
-
-
-
-// SHOW CHANNELS
-
-function showChannels(channels){
-
-
-if(!channelList) return;
-
-
-
-channelList.innerHTML = "";
-
-
-
-channels.forEach(channel=>{
-
-
-let div=document.createElement("div");
-
-
-div.className="channel";
-
-
-
-div.innerHTML = `
-
-<strong>${channel.source}</strong>
-
-<br>
-
-<small>${channel.name}</small>
-
-<br>
-
-<small style="color:#94a3b8">
-${channel.category}
-</small>
-
-`;
-
-
-
-div.onclick = ()=>{
-
-
-document.querySelectorAll(".channel")
-.forEach(x=>x.classList.remove("active"));
-
-
-
-div.classList.add("active");
-
-
-
-if(player){
-
-player.src = channel.url;
-
-}
-
-
-
-if(title){
-
-title.textContent =
-channel.source + " - " + channel.name;
-
-}
-
-
-
-if(sidebar){
-
-sidebar.classList.remove("open");
-
-}
-
-
-if(overlay){
-
-overlay.classList.remove("show");
-
-}
-
-
-
-};
-
-
-
-channelList.appendChild(div);
-
-
-
+window.addEventListener("resize", () => {
+  if (window.innerWidth > 768) {
+    sidebar.classList.remove("open");
+    overlay.classList.remove("show");
+  }
 });
 
-
-
-}
-
-
-
-
-
-// CATEGORY CHANGE
-
-if(categorySelect){
-
-
-categorySelect.onchange = function(){
-
-
-selectedCategory = this.value;
-
-
-applyFilters();
-
-
-
-};
-
-
-}
-
-
-
-
-loadChannels();
+renderChannels();
+loadChannel(0);
