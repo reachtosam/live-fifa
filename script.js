@@ -23,10 +23,10 @@ const channels = [
   //   name: "DSports",
   //   url: "https://vileembeds.pages.dev/embed/dsports-ar"
   // },
-  {
-    name: "CazeTV",
-    url: "https://ritzembeds.pages.dev/embed/cazetv-br"
-  },
+  // {
+  //   name: "CazeTV",
+  //   url: "https://ritzembeds.pages.dev/embed/cazetv-br"
+  // },
   // {
   //   name: "BBC",
   //   url: "https://embedindia.st/embed/wc/2026-07-10/esp-bel/uk"
