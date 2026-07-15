@@ -1,7 +1,7 @@
 const channels = [
   {
     name: "TSN",
-    url: "https://ritzembeds.pages.dev/embed/tsn1-ca"
+    url: "https://ritzembeds.pages.dev/play/tsn1-ca"
   },
   // {
   //   name: "FS1",
@@ -9,15 +9,15 @@ const channels = [
   // },
   {
     name: "FOX",
-    url: "https://ritzembeds.pages.dev/embed/fox-usa"
+    url: "https://ritzembeds.pages.dev/play/fox-usa"
   },
-  {
-    name: "ITV",
-    url: "https://ritzembeds.pages.dev/embed/itv-uk"
-  },
+  // {
+  //   name: "ITV",
+  //   url: "https://ritzembeds.pages.dev/embed/itv-uk"
+  // },
   {
     name: "DAZN",
-    url: "https://ritzembeds.pages.dev/embed/daznmundial-es"
+    url: "https://ritzembeds.pages.dev/play/daznmundial-es"
   },
   // {
   //   name: "DSports",
@@ -27,10 +27,10 @@ const channels = [
   //   name: "CazeTV",
   //   url: "https://ritzembeds.pages.dev/embed/cazetv-br"
   // },
-  // {
-  //   name: "BBC",
-  //   url: "https://embedindia.st/embed/wc/2026-07-10/esp-bel/uk"
-  // },
+  {
+    name: "BBC",
+    url: "https://ritzembeds.pages.dev/play/bbcone-uk"
+  },
   // {
   //   name: "BBC",
   //   url: "https://xyzstreams.st/wc-4-embed.html"
@@ -41,43 +41,43 @@ const channels = [
   // },
   {
     name: "beIN Sports MAX",
-    url: "https://ritzembeds.pages.dev/embed/beinsportsmax-sa"
+    url: "https://ritzembeds.pages.dev/play/beinsportsmax-sa"
   },
-  // {
-  //   name: "Telemundo",
-  //   url: "https://embedindia.st/embed/wc/2026-07-10/esp-bel/telemundo"
-  // },
+  {
+    name: "Telemundo",
+    url: "https://ritzembeds.pages.dev/play/telemundo-usa"
+  },
   // {
   //   name: "UNIVERSO",
   //   url: "https://xyzstreams.st/wc-19-embed.html"
   // },
   {
     name: "TSN 4K",
-    url: "https://ritzembeds.pages.dev/embed/tsn-4k"
+    url: "https://ritzembeds.pages.dev/play/tsn-4k"
   },
-  // {
-  //   name: "BBC 4K",
-  //   url: "https://vileembeds.pages.dev/embed/bbc-4k-2"
-  // },
+  {
+    name: "BBC 4K",
+    url: "https://ritzembeds.pages.dev/play/bbc-uhd"
+  },
   {
     name: "FOX 4K",
-    url: "https://ritzembeds.pages.dev/embed/fox4k-usa"
+    url: "https://ritzembeds.pages.dev/play/fox4k-usa"
   },
   {
     name: "BEIN SPORTS 4K",
-    url: "https://ritzembeds.pages.dev/embed/beinsportsuhd-sa"
+    url: "https://ritzembeds.pages.dev/play/beinsportsuhd-sa"
   },
-  // {
-  //   name: "Telemundo 4K",
-  //   url: "https://embedindia.st/embed/wc/2026-07-10/esp-bel/peacock-4k-hevc"
-  // },
+  {
+    name: "RAITALIA 4K",
+    url: "https://ritzembeds.pages.dev/play/rai4k-it"
+  },
   {
     name: "FUSBALL.TV1 4K",
-    url: "https://ritzembeds.pages.dev/embed/fussballtv1uhd-de"
+    url: "https://ritzembeds.pages.dev/play/fussballtv1uhd-de"
   },
   {
     name: "FUSBALL.TV1 4K NC",
-    url: "https://ritzembeds.pages.dev/embed/fussballtvuhd-de"
+    url: "https://ritzembeds.pages.dev/play/fussballtvuhd-de"
   },
   // {
   //   name: "Telemundo 4K",
