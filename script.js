@@ -1,7 +1,7 @@
 const channels = [
   {
     name: "TSN",
-    url: "https://ritzembeds.pages.dev/play/tsn1-ca"
+    url: "https://logic.icelanders.st/play/tsn1-ca"
   },
   // {
   //   name: "FS1",
@@ -9,7 +9,7 @@ const channels = [
   // },
   {
     name: "FOX",
-    url: "https://ritzembeds.pages.dev/play/fox-usa"
+    url: "https://logic.icelanders.st/embed/fox-usa"
   },
   // {
   //   name: "ITV",
@@ -17,7 +17,7 @@ const channels = [
   // },
   {
     name: "DAZN",
-    url: "https://ritzembeds.pages.dev/play/daznmundial-es"
+    url: "https://logic.icelanders.st/play/daznmundial-es"
   },
   // {
   //   name: "DSports",
@@ -29,7 +29,7 @@ const channels = [
   // },
   {
     name: "BBC",
-    url: "https://ritzembeds.pages.dev/play/bbcone-uk"
+    url: "https://logic.icelanders.st/embed/bbcone-uk"
   },
   // {
   //   name: "BBC",
@@ -41,11 +41,11 @@ const channels = [
   // },
   {
     name: "beIN Sports MAX",
-    url: "https://ritzembeds.pages.dev/play/beinsportsmax-sa"
+    url: "https://logic.icelanders.st/play/beinsportsmax-sa"
   },
   {
     name: "Telemundo",
-    url: "https://ritzembeds.pages.dev/play/telemundo-usa"
+    url: "https://logic.icelanders.st/play/telemundo-usa"
   },
   // {
   //   name: "UNIVERSO",
@@ -53,31 +53,31 @@ const channels = [
   // },
   {
     name: "TSN 4K",
-    url: "https://ritzembeds.pages.dev/play/tsn-4k"
+    url: "https://logic.icelanders.st/play/tsn-4k"
   },
   {
     name: "BBC 4K",
-    url: "https://ritzembeds.pages.dev/play/bbc-uhd"
+    url: "https://logic.icelanders.st/play/bbc-uhd"
   },
   {
     name: "FOX 4K",
-    url: "https://ritzembeds.pages.dev/play/fox4k-usa"
+    url: "https://logic.icelanders.st/play/fox4k-usa"
   },
   {
     name: "BEIN SPORTS 4K",
-    url: "https://ritzembeds.pages.dev/play/beinsportsuhd-sa"
+    url: "https://logic.icelanders.st/play/beinsportsuhd-sa"
   },
   {
     name: "RAITALIA 4K",
-    url: "https://ritzembeds.pages.dev/play/rai4k-it"
+    url: "https://logic.icelanders.st/play/rai4k-it"
   },
   {
     name: "FUSBALL.TV1 4K",
-    url: "https://ritzembeds.pages.dev/play/fussballtv1uhd-de"
+    url: "https://logic.icelanders.st/play/fussballtv1uhd-de"
   },
   {
     name: "FUSBALL.TV1 4K NC",
-    url: "https://ritzembeds.pages.dev/play/fussballtvuhd-de"
+    url: "https://logic.icelanders.st/play/fussballtvuhd-de"
   },
   // {
   //   name: "Telemundo 4K",
