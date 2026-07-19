@@ -11,22 +11,22 @@ const channels = [
     name: "FOX",
     url: "https://logic.icelanders.st/embed/fox-usa"
   },
-  // {
-  //   name: "ITV",
-  //   url: "https://ritzembeds.pages.dev/embed/itv-uk"
-  // },
+  {
+     name: "ITV",
+     url: "https://logic.icelanders.st/embed/itv-uk"
+   },
   {
     name: "DAZN",
     url: "https://logic.icelanders.st/embed/daznmundial-es"
   },
-  // {
-  //   name: "DSports",
-  //   url: "https://vileembeds.pages.dev/embed/dsports-ar"
-  // },
-  // {
-  //   name: "CazeTV",
-  //   url: "https://ritzembeds.pages.dev/embed/cazetv-br"
-  // },
+   {
+    name: "DSports",
+     url: "https://logic.icelanders.st/embed/dsport-ar"
+   },
+   {
+     name: "CazeTV",
+    url: "https://logic.icelanders.st/embed/cazetv-br"
+  },
   {
     name: "BBC",
     url: "https://logic.icelanders.st/embed/bbcone-uk"
@@ -47,14 +47,14 @@ const channels = [
     name: "Telemundo",
     url: "https://logic.icelanders.st/embed/telemundo-usa"
   },
-  // {
-  //   name: "UNIVERSO",
-  //   url: "https://xyzstreams.st/wc-19-embed.html"
-  // },
   {
-    name: "TSN 4K",
-    url: "https://logic.icelanders.st/embed/tsn-4k"
-  },
+   name: "UNIVERSO",
+    url: "https://logic.icelanders.st/embed/universo-usa"
+   },
+ // {
+   // name: "TSN 4K",
+   // url: "https://logic.icelanders.st/embed/tsn-4k"
+ // },
   {
     name: "BBC 4K",
     url: "https://logic.icelanders.st/embed/bbc-uhd"
@@ -79,10 +79,10 @@ const channels = [
     name: "FUSBALL.TV1 4K NC",
     url: "https://logic.icelanders.st/embed/fussballtvuhd-de"
   },
-  // {
-  //   name: "Telemundo 4K",
-  //   url: "https://xyzstreams.st/wc-12-embed.html"
-  // },
+   {
+     name: "NOW HK 4K",
+    url: "https://logic.icelanders.st/embed/now-4k-hk"
+  },
 ];
 
 const channelList = document.getElementById("channelList");
