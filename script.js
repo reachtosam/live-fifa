@@ -1,7 +1,7 @@
 const channels = [
   {
     name: "TSN",
-    url: "https://logic.icelanders.st/play/tsn1-ca"
+    url: "https://logic.icelanders.st/embed/tsn1-ca"
   },
   // {
   //   name: "FS1",
@@ -17,7 +17,7 @@ const channels = [
   // },
   {
     name: "DAZN",
-    url: "https://logic.icelanders.st/play/daznmundial-es"
+    url: "https://logic.icelanders.st/embed/daznmundial-es"
   },
   // {
   //   name: "DSports",
@@ -41,11 +41,11 @@ const channels = [
   // },
   {
     name: "beIN Sports MAX",
-    url: "https://logic.icelanders.st/play/beinsportsmax-sa"
+    url: "https://logic.icelanders.st/embed/beinsportsmax-sa"
   },
   {
     name: "Telemundo",
-    url: "https://logic.icelanders.st/play/telemundo-usa"
+    url: "https://logic.icelanders.st/embed/telemundo-usa"
   },
   // {
   //   name: "UNIVERSO",
@@ -53,31 +53,31 @@ const channels = [
   // },
   {
     name: "TSN 4K",
-    url: "https://logic.icelanders.st/play/tsn-4k"
+    url: "https://logic.icelanders.st/embed/tsn-4k"
   },
   {
     name: "BBC 4K",
-    url: "https://logic.icelanders.st/play/bbc-uhd"
+    url: "https://logic.icelanders.st/embed/bbc-uhd"
   },
   {
     name: "FOX 4K",
-    url: "https://logic.icelanders.st/play/fox4k-usa"
+    url: "https://logic.icelanders.st/embed/fox4k-usa"
   },
   {
     name: "BEIN SPORTS 4K",
-    url: "https://logic.icelanders.st/play/beinsportsuhd-sa"
+    url: "https://logic.icelanders.st/embed/beinsportsuhd-sa"
   },
   {
     name: "RAITALIA 4K",
-    url: "https://logic.icelanders.st/play/rai4k-it"
+    url: "https://logic.icelanders.st/embed/rai4k-it"
   },
   {
     name: "FUSBALL.TV1 4K",
-    url: "https://logic.icelanders.st/play/fussballtv1uhd-de"
+    url: "https://logic.icelanders.st/embed/fussballtv1uhd-de"
   },
   {
     name: "FUSBALL.TV1 4K NC",
-    url: "https://logic.icelanders.st/play/fussballtvuhd-de"
+    url: "https://logic.icelanders.st/embed/fussballtvuhd-de"
   },
   // {
   //   name: "Telemundo 4K",
