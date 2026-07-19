@@ -1,7 +1,7 @@
 const channels = [
   {
     name: "TSN",
-    url: "https://logic.icelanders.st/embed/tsn1-ca"
+    url: "https://hgfutgtbjfbtfb.pages.dev/play/tsn1-ca"
   },
   // {
   //   name: "FS1",
@@ -9,28 +9,28 @@ const channels = [
   // },
   {
     name: "FOX",
-    url: "https://logic.icelanders.st/embed/fox-usa"
+    url: "https://hgfutgtbjfbtfb.pages.dev/play/fox-usa"
   },
   {
      name: "ITV",
-     url: "https://logic.icelanders.st/embed/itv-uk"
+     url: "https://hgfutgtbjfbtfb.pages.dev/play/itv-uk"
    },
   {
     name: "DAZN",
-    url: "https://logic.icelanders.st/embed/daznmundial-es"
+    url: "https://hgfutgtbjfbtfb.pages.dev/play/daznmundial-es"
   },
    {
     name: "DSports",
-     url: "https://logic.icelanders.st/embed/dsport-ar"
+     url: "https://hgfutgtbjfbtfb.pages.dev/play/ddsports-in"
    },
    {
      name: "CazeTV",
-    url: "https://logic.icelanders.st/embed/cazetv-br"
+    url: "https://hgfutgtbjfbtfb.pages.dev/play/cazetv-br"
   },
-  {
-    name: "BBC",
-    url: "https://logic.icelanders.st/embed/bbcone-uk"
-  },
+  //{
+   // name: "BBC",
+  //  url: "https://logic.icelanders.st/embed/bbcone-uk"
+//  },
   // {
   //   name: "BBC",
   //   url: "https://xyzstreams.st/wc-4-embed.html"
@@ -41,47 +41,47 @@ const channels = [
   // },
   {
     name: "beIN Sports MAX",
-    url: "https://logic.icelanders.st/embed/beinsportsmax-sa"
+    url: "https://hgfutgtbjfbtfb.pages.dev/play/beinsportsmax-sa"
   },
   {
     name: "Telemundo",
-    url: "https://logic.icelanders.st/embed/telemundo-usa"
+    url: "https://hgfutgtbjfbtfb.pages.dev/play/telemundo-usa"
   },
   {
    name: "UNIVERSO",
-    url: "https://logic.icelanders.st/embed/universo-usa"
+    url: "https://hgfutgtbjfbtfb.pages.dev/play/universo-usa"
    },
  // {
    // name: "TSN 4K",
    // url: "https://logic.icelanders.st/embed/tsn-4k"
  // },
-  {
-    name: "BBC 4K",
-    url: "https://logic.icelanders.st/embed/bbc-uhd"
-  },
+ // {
+  //  name: "BBC 4K",
+  //  url: "https://logic.icelanders.st/embed/bbc-uhd"
+ // },
   {
     name: "FOX 4K",
-    url: "https://logic.icelanders.st/embed/fox4k-usa"
+    url: "https://hgfutgtbjfbtfb.pages.dev/play/fox4k-usa"
   },
   {
     name: "BEIN SPORTS 4K",
-    url: "https://logic.icelanders.st/embed/beinsportsuhd-sa"
+    url: "https://hgfutgtbjfbtfb.pages.dev/play/beinsportsuhd-sa"
   },
   {
     name: "RAITALIA 4K",
-    url: "https://logic.icelanders.st/embed/rai4k-it"
+    url: "https://hgfutgtbjfbtfb.pages.dev/play/rai4k-it"
   },
   {
     name: "FUSBALL.TV1 4K",
-    url: "https://logic.icelanders.st/embed/fussballtv1uhd-de"
+    url: "https://hgfutgtbjfbtfb.pages.dev/play/fussballtv1uhd-de"
   },
   {
     name: "FUSBALL.TV1 4K NC",
-    url: "https://logic.icelanders.st/embed/fussballtvuhd-de"
+    url: "https://hgfutgtbjfbtfb.pages.dev/play/fussballtvuhd-de"
   },
    {
      name: "NOW HK 4K",
-    url: "https://logic.icelanders.st/embed/now-4k-hk"
+    url: "https://hgfutgtbjfbtfb.pages.dev/play/now-4k-hk"
   },
 ];
 
